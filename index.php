@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
@@ -25,22 +25,31 @@
               <div class="navbar-inner">
                 <a class="brand" href="#">&nbsp;Health Track</a>
                 <ul class="nav">
-                    <li class="active"><a href="#">Dashboard</a></li>
-                    <li><a href="#">Patient Records</a></li>
-                    <li><a href="#">Physician Scheduler</a></li>
+                    <li class="active"><a href="#" data-bind="html: navigation.dashboard()"><i class="icon-home"></i> Dashboard</a></li>
+                    <li><a href="#" data-bind="html: navigation.patient_records()"><i class="icon-file"></i> Patient Records</a></li>
+                    <li><a href="#" data-bind="html: navigation.physician_scheduler()"><i class="icon-time"></i> Physician Scheduler</a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Order Tracking <b class="caret"></b></a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#" ><span data-bind="html: navigation.order_tracking()"><i class="icon-barcode"></i> Order Tracking </span> <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Pharmacy</a></li>
                             <li><a href="#">Lab</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Insurance Billing</a></li>
-                    <li><a href="#">Equipment and Inventory</a></li>
+                    <li><a href="#" data-bind="html: navigation.insurance_billing()"><i class="icon-list-alt"></i> Insurance Billing</a></li>
+                    <li><a href="#"  data-bind="html: navigation.equipment_and_inventory()"><i class="icon-tags"></i> Equipment and Inventory</a></li>
+                </ul>
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><i class="icon-user">&nbsp;</i> Aaron Smith <b class="caret"></b></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Log Out</a></li>
+                        </ul>
+                    </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Administration <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">My Account</a></li>
+                            <li><a href="#" data-bind="click: toggleShowIcons, text: (!showIcons() ? 'Show icons with menu text' : 'Show only menu text')">Show only menu text</a></li>
                             <li><a href="#">Manage Users</a></li>
                             <li><a href="#">Manage Permissions</a></li>
                         </ul>
@@ -54,8 +63,8 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.1.min.js"><\/script>')</script>
         <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/vendor/knockout-1.8.1.min.js"></script>
-
+        <script src="js/vendor/knockout-2.1.0.js"></script>
+        <script src="js/view_models/indexViewModel.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
