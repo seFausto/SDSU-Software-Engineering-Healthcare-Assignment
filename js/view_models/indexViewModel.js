@@ -5,7 +5,7 @@ var indexViewModel = function() {
   self.navigation = {
     dashboard : ko.computed(function() {
       if(!self.showIcons()) return 'Dashboard';
-      return '<i class="icon-home"></i> Dashboard'
+      return '<i class="icon-home"></i> '
     }), 
     patient_records : ko.computed(function() {
       if(!self.showIcons()) return 'Patient Records';
@@ -16,16 +16,16 @@ var indexViewModel = function() {
       return '<i class="icon-time"></i> Physician Scheduler'
     }), 
     order_tracking : ko.computed(function() {
-      if(!self.showIcons()) return 'Order Tracking';
-      return '<i class="icon-barcode"></i> Order Tracking'
+      if(!self.showIcons()) return 'Orders';
+      return '<i class="icon-barcode"></i> Orders'
     }), 
     insurance_billing : ko.computed(function() {
-      if(!self.showIcons()) return 'Insurance Billing';
-      return '<i class="icon-list-alt"></i> Insurance Billing'
+      if(!self.showIcons()) return ' Billing';
+      return '<i class="icon-list-alt"></i>  Billing'
     }), 
     equipment_and_inventory : ko.computed(function() {
-      if(!self.showIcons()) return 'Equipment and Inventory';
-      return '<i class="icon-tags"></i> Equipment and Inventory'
+      if(!self.showIcons()) return 'Equipment';
+      return '<i class="icon-tags"></i> Equipment'
     }), 
 
   }
@@ -34,6 +34,12 @@ var indexViewModel = function() {
     if(self.showIcons()) self.showIcons(false);
     else self.showIcons(true);
   }
+
+  self.setTemplate = function(name) {
+    self.currentTemplate(name);
+  }
+  self.currentTemplate = ko.observable("login");
+  console.log(self.currentTemplate());
 }
 
 ko.applyBindings(new indexViewModel());
