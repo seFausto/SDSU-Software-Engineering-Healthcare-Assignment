@@ -4,11 +4,12 @@
 	$dbPassword = "1234";
 	$dbName = "HealthTrak";
 
+
 	$con = mysql_connect($dbHost, $dbUserName, $dbPassword)
-	or die ('Could not connect: '.mysql_error());
+		or die ('Could not connect: '.mysql_error());
 
 	mysql_select_db($dbName, $con) 
-	or die ('Could not select database: '.mysql_error());
+		or die ('Could not select database: '.mysql_error());
 
 
 	function getQueryResult($query)
@@ -24,6 +25,10 @@
 		return $queryResult;
 
 	}
+
+
+
+	define('maxNumberOfResults', '20');
 
 ?>
 
