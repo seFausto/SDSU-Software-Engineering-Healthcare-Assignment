@@ -1,7 +1,7 @@
 <?php
 	require 'config.php';
 
-	$patientID =  1;//$_POST['PatientID'];
+	$patientID =  $_GET['pid'];
 
 	$query = sprintf("SELECT p.ID,  p.NameFirst, p.NameLast, p.NameMiddle, p.Address, p.Phone, p.InsuranceCarrierID, p.DateOfBirth, p.Gender, p.PrimaryCarePhysician
 						,p.ChangeByID, p.ChangeDate
@@ -11,8 +11,13 @@
 
 	$queryResult = getQueryResult($query);
 
-	$row = mysql_fetch_row($queryResult);
+	if(mysql_num_rows($queryResult))
+		echo json_encode(mysql_fetch_assoc($queryResult));
 
+	else 
+		echo json_encode(array('ID' => -1));
+	/*
+	Why was all this here when there is a perfectly good mysql_fetch_assoc function to use?
 	if ($row)
 	{
 		$arr = array('ID' => $row[0],
@@ -34,6 +39,6 @@
 		$arr = array('ID' => -1);
 	}
 
-	echo json_encode($arr);
+	echo json_encode($arr);*/
 
 ?>

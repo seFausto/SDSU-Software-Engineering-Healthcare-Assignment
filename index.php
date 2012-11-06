@@ -1,9 +1,8 @@
 <?php include "templates/header.php"; ?>
 
-<div ng-view>
+<div ng-view style="margin-top: 50px;">
 
 </div>
-<!-- Container is closed in footer.php -->
 
 
 <?php include "templates/footer.php"; ?>

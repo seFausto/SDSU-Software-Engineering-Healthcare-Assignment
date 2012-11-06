@@ -1,57 +1,77 @@
-<h4>View Patient Infotmation for {{patient.NameLast}}, {{patient.NameFirst}} {{patient.NameMiddle}}</h4>
-<form class="form form-horizontal">
-  <div class="control-group">
-      <label class="control-label">ID</label>
-      <div class="controls">
-        {{patient.ID}}
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <h5>Viewing Patient Infotmation for {{patient.NameLast}}, {{patient.NameFirst}} {{patient.NameMiddle}}</h5>
     </div>
+  </div>
+  <div class="row">
+    <form class="form form-horizontal">
+      <div class="control-group">
+          <label class="control-label">Patient ID</label>
+          <div class="controls">
+            {{patient.ID}}
+          </div>
+        </div>
 
-  <div class="control-group">
+      <div class="control-group">
+        <label class="control-label">First Name</label>
+        <div class="controls">
+          <input type="text" ng-model="patient.NameFirst">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Middle Name</label>
+        <div class="controls">
+          <input type="text" ng-model="patient.NameMiddle">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Last Name</label>
+        <div class="controls">
+          <input type="text" ng-model="patient.NameLast">
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Primary Care Physician</label>
+        <div class="controls">
+          <input type="text" ng-model="patient.PrimaryCarePhysician">
+        </div>
+      </div>
 
-<label class="control-label">Name</label>
-<div class="controls">
-  <input type="text" ng-model="patient.patientFullName" ng-change="updatePatientName()" value="{{patient.NameFirst + ' ' + patient.NameMiddle + ' ' + patient.NameLast}}">
-</div>
-</div>
+      <div class="control-group">
+        <label class="control-label">Gender</label>
+        <div class="controls">
+          <select ng-model="patient.Gender">
+            <option value="0">Female</option>
+            <option value="1">Male</option>
+          </select>
+        </div>
+      </div>
 
-  <div class="control-group">
+      <div class="control-group">
+        <label class="control-label">Address</label>
+        <div class="controls">
+          <textarea ng-model="patient.Address"></textarea>
+        </div>
+      </div>
 
-<label class="control-label">Primary Care Physician</label>
-<div class="controls">
-  <input type="text" ng-model="patient.PrimaryCarePhysician">
-</div>
-</div>
-  <div class="control-group">
+      <div class="control-group">
 
-<label class="control-label">Gender</label>
-<div class="controls">
-  <select ng-model="patient.gender">
-    <option value="0">Female</option>
-    <option value="1">Male</option>
-  </select>
-</div>
-</div>
-  <div class="control-group">
+        <label class="control-label">Phone</label>
+        <div class="controls">
+          <input type="text" ng-model="patient.Phone">
+        </div>
+      </div>
 
-<label class="control-label">Address</label>
-<div class="controls">
-  <textarea ng-model="patient.Address"></textarea>
-</div>
-</div>
-
-  <div class="control-group">
-
-<label class="control-label">Phone</label>
-<div class="controls">
-  <input type="text" ng-model="patient.Phone">
-</div>
-</div>
-
-  <div class="control-group">
-
-<label class="control-label">Insurance Carrier ID</label>
-<div class="controls">
-  {{patient.InsuranceCarrierID}}
-</div>
-</div>
+      <div class="control-group">
+        <label class="control-label">Insurance Carrier ID</label>
+        <div class="controls">
+          {{patient.InsuranceCarrierID}}
+        </div>
+      </div>
+       <div class="control-group">
+        <div class="controls">
+          <button class="btn btn-primary" ng-click="save()">Save Fields</button>
+        </div>
+      </div>
+    </form>
