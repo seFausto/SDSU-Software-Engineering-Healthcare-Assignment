@@ -33,7 +33,7 @@
                     
                     <ul class="nav">
                         <li class=" active-{{currentPage=='home'}}"><a href="#" ><i class="icon-home"></i> </a></li>
-                        <li class="active-{{currentPage=='patient_records'}}"><a href="#" ></i> Patient Records</a></li>
+                        <li class="active-{{currentPage=='patient_records'}}"><a href="#/patient_records/" ></i> Patient Records</a></li>
                         <li class="active-{{currentPage=='physician_sceduler'}}"><a href="#" ></i> Physician Scheduler</a></li>
                         <li class="active-{{currentPage=='pharmacy'}}" class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><span></b></a>
