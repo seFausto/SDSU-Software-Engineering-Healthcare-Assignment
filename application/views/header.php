@@ -46,13 +46,15 @@
                         <li class="active-{{currentPage=='equipment'}}"><a href="#"  ></i> Equipment</a></li>
                     </ul>
                     <ul class="nav pull-right">
+                        <?php if(isset($_SESSION['user'])) { ?>
                         <li class="active-{{currentPage=='account'}}" class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><i class="icon-user">&nbsp;</i> Aaron Smith <b class="caret"></b></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><i class="icon-user">&nbsp;</i> <?php echo $_SESSION['user']['userName'];?> <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">My Account</a></li>
                                 <li><a href="<?php echo base_url();?>index.php/login/logout">Log Out</a></li>
                             </ul>
                         </li>
+                        <?php } ?>
                         <li class="active-{{currentPage=='admin'}}" class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Administration <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
