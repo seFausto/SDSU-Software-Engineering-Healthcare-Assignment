@@ -1,27 +1,41 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Login extends CI_Controller {
 
-  /**
-   * Index Page for this controller.
-   *
-   * Maps to the following URL
-   *    http://example.com/index.php/welcome
-   *  - or -  
-   *    http://example.com/index.php/welcome/index
-   *  - or -
-   * Since this controller is set as the default controller in 
-   * config/routes.php, it's displayed at http://example.com/
-   *
-   * So any other public methods not prefixed with an underscore will
-   * map to /index.php/welcome/<method_name>
-   * @see http://codeigniter.com/user_guide/general/urls.html
-   */
+
   public function index()
   {
-    //$this->load->view('header');
-    $this->load->view('login');
+    if($this->input->post('ID') && $this->input->post('password')) {
+      $id = $this->input->post('ID');
+      $password = $this->input->post('password');
+
+      $this->db->from('User')->where(array(
+        'UserName' => $id, 
+        'Password' => md5($password)));  //I am using md5, please add your own encryption if you want this to be more secure.
+      $userInDatabase = $this->db->get();
+      if($userInDatabase->num_rows()) {
+        $detailedUserInformation = $userInDatabase->row_array();
+        $_SESSION['user'] = array(
+          'id' => $detailedUserInformation['ID'], 
+          'userName' => $detailedUserInformation['UserName'], 
+          'user_type' => $detailedUserInformation['UserTypeID'], 
+          'employeeNumber' => $detailedUserInformation['EmployeeNumber']);
+        redirect('welcome');
+      } else
+        $error = "Could not validate those credentials. Please try again.";
+    } else if($this->input->post('ID') || $this->input->post('password'))
+      $error = "Plese fill in both fields to log in.";
+
+    $this->load->view('header');
+    $this->load->view('login', array(
+      'error' => (isset($error) ? $error : false)));
     $this->load->view('footer');
+  }
+
+  public function logout() {
+    if(isset($_SESSION['user']))
+      unset($_SESSION['user']);
+    $this->index();
   }
 }
 

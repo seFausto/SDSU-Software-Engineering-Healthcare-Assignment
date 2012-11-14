@@ -50,7 +50,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><i class="icon-user">&nbsp;</i> Aaron Smith <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">My Account</a></li>
-                                <li><a href="#">Log Out</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/logout">Log Out</a></li>
                             </ul>
                         </li>
                         <li class="active-{{currentPage=='admin'}}" class="dropdown">

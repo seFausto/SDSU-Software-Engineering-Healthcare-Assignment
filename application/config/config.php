@@ -15,7 +15,7 @@
 |
 */
 //SET THIS TO YOUR LOCALHOST!
-$config['base_url']	= 'localhost:8888/ht';
+$config['base_url']	= 'http://localhost:8888/healthtrak';
 
 /*
 |--------------------------------------------------------------------------

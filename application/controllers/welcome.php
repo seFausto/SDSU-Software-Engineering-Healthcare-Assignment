@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+	
+	error_reporting(E_ALL);
+ini_set('display_errors', '1');
 class Welcome extends CI_Controller {
 
 	/**
@@ -19,6 +21,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		$this->load->model('userModel');
+		if(!$this->userModel->isLoggedIn()) 
+			redirect('login');
 
 		$this->load->view('header');
 		$this->load->view('index');

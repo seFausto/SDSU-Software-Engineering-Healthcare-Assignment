@@ -7,7 +7,7 @@ var loginController = function($scope, $http) {
 } 
 
 var patientRecordsController = function($scope, $http) {
-  $http({method: 'GET', url: 'index.php/dataAccess/getMultiplePatients'}).
+  $http({method: 'GET', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/getMultiplePatients'}).
   success(function(data, status, headers, config) {
     $scope.patients = data;
   }).
@@ -29,7 +29,7 @@ var patientRecordsController = function($scope, $http) {
 
 var singlePatientRecordController = function($scope, $http, $routeParams) {
   console.log("Loaded");
-  $http({method: 'GET', url: 'index.php/dataAccess/getPatientInformation/' + $routeParams.pid}).
+  $http({method: 'GET', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/getPatientInformation/' + $routeParams.pid}).
   success(function(data, status, headers, config) {
     $scope.patient = data;
     console.log($scope.patient);
@@ -39,7 +39,7 @@ var singlePatientRecordController = function($scope, $http, $routeParams) {
   });
 
   $scope.save = function() {
-    $http({method: 'POST', url: 'index.php/dataAccess/setPatientInformation/', data: $scope.patient}).
+    $http({method: 'POST', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/setPatientInformation/', data: $scope.patient}).
     success(function(data, status, headers, config) {
       
     }).

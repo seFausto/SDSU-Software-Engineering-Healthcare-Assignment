@@ -14,11 +14,11 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link rel="stylesheet" href="css/normalize.min.css">
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.min.css">
+        <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
 
-        <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+        <script src="<?php echo base_url();?>js/vendor/modernizr-2.6.1.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -50,7 +50,7 @@
                             <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><i class="icon-user">&nbsp;</i> Aaron Smith <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="#">My Account</a></li>
-                                <li><a href="#">Log Out</a></li>
+                                <li><a href="<?php echo base_url();?>index.php/login/logout">Log Out</a></li>
                             </ul>
                         </li>
                         <li class="active-{{currentPage=='admin'}}" class="dropdown">
