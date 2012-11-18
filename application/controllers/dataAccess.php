@@ -33,6 +33,26 @@ class DataAccess extends CI_Controller {
   public function setPatientInformation() {
     $patientInfo = json_decode(file_get_contents("php://input"));
 
+    $this->db->from('Patient')->where('ID', $patientInfo->ID);
+    $query = $this->db->get();
+    if($query->num_rows()) {
+      $result = $query->row();
+      $this->db->insert('PatientHistory', array(
+        'ID' => $result->ID, 
+        'NameFirst' => $result->NameFirst, 
+        'NameLast' => $result->NameLast, 
+        'NameMiddle' => $result->NameMiddle, 
+        'Address' => $result->Address, 
+        'Phone' => $result->Phone, 
+        'InsuranceCarrierID' => $result->InsuranceCarrierID,
+        'DateOfBirth' => $result->DateOfBirth, 
+        'Gender' => $result->Gender, 
+        'PrimaryCarePhysician' => $result->PrimaryCarePhysician, 
+        'ChangeByID' => $_SESSION['user']['id'], 
+        'ChangeDate' => time()));
+    }
+
+
     if($patientInfo->ID) {
       $this->db->where('ID', $patientInfo->ID);
       $this->db->update('Patient', $patientInfo);

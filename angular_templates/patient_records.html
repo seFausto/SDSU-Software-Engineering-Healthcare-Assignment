@@ -27,7 +27,8 @@
         <td>{{patient.PrimaryCarePhysician}}</td>
         <td>{{getGender(patient)}}</td>
         <td>{{patient.InsuranceCarrierID}}</td>
-        <td><a href="#/patient_records/{{patient.ID}}">View and Edit</a></td>
+        <td><a href="#/patient_records/{{patient.ID}}">View and Edit</a> | 
+          <a href="#/patient_history/{{patient.ID}}">Patient History</a></td>
       </tbody>
   </table>
 </div>
