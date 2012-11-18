@@ -9,6 +9,20 @@ class userModel extends CI_Model {
     } 
     return false;
   }
+
+  function getAccessArray() {
+    $accessArray = array(
+      'patient_records' => true, 
+      'pharmacy' => true, 
+      'physician_scheduler' => true, 
+      'administration' => true, 
+      'billing' => false, 
+      'equipment' => true, 
+      'add patient' => true
+      );
+
+    return $accessArray;
+  }
 }
 
 ?>

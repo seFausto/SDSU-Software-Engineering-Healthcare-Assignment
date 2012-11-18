@@ -16,7 +16,10 @@ var patientRecordsController = function($scope, $http) {
   });
 
   $scope.getFullName = function(patient) {
-    return patient.NameFirst + " " + patient.NameMiddle + " " + patient.NameLast;
+    if(patient.NameMiddle)
+      return patient.NameFirst + " " + patient.NameMiddle + " " + patient.NameLast;
+    else
+      return patient.NameFirst + " " + patient.NameLast;
   }
   $scope.getGender = function(patient) {
     if(patient.Gender == 0)
@@ -41,10 +44,37 @@ var singlePatientRecordController = function($scope, $http, $routeParams) {
   $scope.save = function() {
     $http({method: 'POST', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/setPatientInformation/', data: $scope.patient}).
     success(function(data, status, headers, config) {
-      
+      window.history.back(-1);
     }).
     error(function(data, status, headers, config) {
       //Should do something to handle errors.
     });
+  }
+
+  $(".datepicker").datepicker({
+    changeYear: true,
+    yearRange : "1970:2012",
+    onSelect : function(date, obj) { 
+      $scope.patient.DateOfBirth = Date.parse(date).getTime()/1000;
+    }
+  });
+
+}
+
+var addPatientController = function($scope, $http) {
+  $scope.patient = {};
+  $scope.patient.Gender = 0;
+
+  $scope.save = function() {
+    $http({method: 'POST', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/addPatient/', data: $scope.patient}).
+    success(function(data, status, headers, config) {
+      window.history.back(-1);
+    }).
+    error(function(data, status, headers, config) {
+      //Should do something to handle errors.
+    });
+
+
+    
   }
 } 

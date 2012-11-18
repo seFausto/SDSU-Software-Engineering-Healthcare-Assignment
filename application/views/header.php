@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.min.css">
         <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.css">
         <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
+        <link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui-1.9.1.custom.css">
+
 
         <script src="<?php echo base_url();?>js/vendor/modernizr-2.6.1.min.js"></script>
     </head>
@@ -33,8 +35,16 @@
                     
                     <ul class="nav">
                         <li class=" active-{{currentPage=='home'}}"><a href="#" ><i class="icon-home"></i> </a></li>
-                        <li class="active-{{currentPage=='patient_records'}}"><a href="#/patient_records/" ></i> Patient Records</a></li>
+                        <?php if($access['patient_records']) { ?>
+                            <li class="active-{{currentPage=='patient_records'}}"><a href="#/patient_records/" ></i> Patient Records</a></li>
+                        <?php } ?>
+                         <?php if($access['add patient']) { ?>
+                        <li class="active-{{currentPage=='add_patient'}}"><a href="#add_patient" ></i> Add Patient</a></li>
+                        <?php } ?>
+                        <?php if($access['physician_scheduler']) { ?>
                         <li class="active-{{currentPage=='physician_sceduler'}}"><a href="#" ></i> Physician Scheduler</a></li>
+                        <?php } ?>
+                        <?php if($access['pharmacy']) { ?>
                         <li class="active-{{currentPage=='pharmacy'}}" class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><span></b></a>
                             <ul class="dropdown-menu" role="menu">
@@ -42,8 +52,13 @@
                                 <li><a href="#" >Lab</a></li>
                             </ul>
                         </li>
+                        <?php } ?>
+                        <?php if($access['billing']) { ?>
                         <li class="active-{{currentPage=='billing'}}"><a href="#" ></i> Billing</a></li>
+                        <?php } ?>
+                        <?php if($access['equipment']) { ?>
                         <li class="active-{{currentPage=='equipment'}}"><a href="#"  ></i> Equipment</a></li>
+                        <?php } ?>
                     </ul>
                     <ul class="nav pull-right">
                         <?php if(isset($_SESSION['user'])) { ?>
@@ -55,14 +70,15 @@
                             </ul>
                         </li>
                         <?php } ?>
+                        <?php if($access['administration']) { ?>
                         <li class="active-{{currentPage=='admin'}}" class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Administration <b class="caret"></b></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="#" >Show only menu text</a></li>
                                 <li><a href="#">Manage Users</a></li>
                                 <li><a href="#">Manage Permissions</a></li>
                             </ul>
                         </li>
+                        <?php } ?>
                     </ul>
               </div>
             </div>

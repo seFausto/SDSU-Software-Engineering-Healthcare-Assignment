@@ -25,7 +25,10 @@ class Welcome extends CI_Controller {
 		if(!$this->userModel->isLoggedIn()) 
 			redirect('login');
 
-		$this->load->view('header');
+		$access = $this->userModel->getAccessArray();
+
+		$this->load->view('header', array(
+			'access' => $access));
 		$this->load->view('index');
 		$this->load->view('footer');
 	}

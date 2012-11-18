@@ -18,7 +18,7 @@ class Login extends CI_Controller {
         $_SESSION['user'] = array(
           'id' => $detailedUserInformation['ID'], 
           'userName' => $detailedUserInformation['UserName'], 
-          'user_type' => $detailedUserInformation['UserTypeID'], 
+          'userType' => $detailedUserInformation['UserTypeID'], 
           'employeeNumber' => $detailedUserInformation['EmployeeNumber']);
         redirect('welcome');
       } else
@@ -26,7 +26,10 @@ class Login extends CI_Controller {
     } else if($this->input->post('ID') || $this->input->post('password'))
       $error = "Plese fill in both fields to log in.";
 
-    $this->load->view('header');
+    $this->load->model('userModel');
+
+    $this->load->view('header', array(
+      'access' => $this->userModel->getAccessArray()));
     $this->load->view('login', array(
       'error' => (isset($error) ? $error : false)));
     $this->load->view('footer');

@@ -40,7 +40,11 @@ class DataAccess extends CI_Controller {
       echo "ERRO"; die();
     }
   }
-  
+
+  public function addPatient() {
+    $patientInfo = json_decode(file_get_contents("php://input"));
+    $this->db->insert('Patient', $patientInfo);
+  }
 }
 
 /* End of file welcome.php */

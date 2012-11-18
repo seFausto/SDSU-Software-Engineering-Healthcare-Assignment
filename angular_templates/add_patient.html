@@ -1,22 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="well">
-      <h5>Viewing Patient Infotmation for {{patient.NameLast}}, {{patient.NameFirst}} {{patient.NameMiddle}}</h5>
+      <h5>Add New Patient</h5>
     </div>
   </div>
   <div class="row">
-    <form class="form form-horizontal">
-      <div class="control-group">
-          <label class="control-label">Patient ID</label>
-          <div class="controls">
-            {{patient.ID}}
-          </div>
-        </div>
-
+    <form class="form form-horizontal" name="addPatient">
       <div class="control-group">
         <label class="control-label">First Name</label>
         <div class="controls">
-          <input type="text" ng-model="patient.NameFirst">
+          <input type="text" name="firstName" ng-model="patient.NameFirst" required> 
         </div>
       </div>
       <div class="control-group">
@@ -28,13 +21,13 @@
       <div class="control-group">
         <label class="control-label">Last Name</label>
         <div class="controls">
-          <input type="text" ng-model="patient.NameLast">
+          <input type="text" name="lastName" ng-model="patient.NameLast" required>
         </div>
       </div>
       <div class="control-group">
         <label class="control-label">Date of Birth</label>
         <div class="controls">
-          <input type="text" class="datepicker" value="{{patient.DateOfBirth | date:'MM/dd/yyyy'}}">
+          <input type="text" name="dateOfBirth" ng-model="patient.DateOfBirth" class="datepicker" required>
         </div>
       </div>
       <div class="control-group">
@@ -47,8 +40,8 @@
       <div class="control-group">
         <label class="control-label">Gender</label>
         <div class="controls">
-          <select ng-model="patient.Gender">
-            <option value="0">Female</option>
+          <select ng-model="patient.Gender" required>
+            <option value="0" selected>Female</option>
             <option value="1">Male</option>
           </select>
         </div>
@@ -57,7 +50,7 @@
       <div class="control-group">
         <label class="control-label">Address</label>
         <div class="controls">
-          <textarea ng-model="patient.Address"></textarea>
+          <textarea ng-model="patient.Address" name="address" required></textarea>
         </div>
       </div>
 
@@ -65,25 +58,20 @@
 
         <label class="control-label">Phone</label>
         <div class="controls">
-          <input type="text" ng-model="patient.Phone">
+          <input type="text" ng-model="patient.Phone" name="phone" ng-pattern="/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/
+" required>
         </div>
       </div>
 
       <div class="control-group">
         <label class="control-label">Insurance Carrier ID</label>
         <div class="controls">
-          {{patient.InsuranceCarrierID}}
+          <input type="text" ng-model="patient.InsuranceCarrierID">
         </div>
       </div>
        <div class="control-group">
         <div class="controls">
-          <button class="btn btn-primary" ng-click="save()">Save Fields</button>
+          <button class="btn btn-primary" ng-click="save()" ng-disabled="!addPatient.dateOfBirth.$valid || !addPatient.lastName.$valid || !addPatient.phone.$valid || !addPatient.address.$valid || !addPatient.firstName.$valid">Add Patient</button>
         </div>
       </div>
     </form>
-
-    <script language="javascript">
-    $(document).ready(function() {
-      
-    })
-    </script>

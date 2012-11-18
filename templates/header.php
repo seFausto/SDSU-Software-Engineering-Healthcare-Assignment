@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/jquery-ui-1.9.1.custom.css">
 
         <script src="js/vendor/modernizr-2.6.1.min.js"></script>
     </head>
