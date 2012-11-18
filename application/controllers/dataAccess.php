@@ -41,7 +41,7 @@ class DataAccess extends CI_Controller {
       $query = $this->db->get();
 
       $result = array();
-      foreach ($query->row_array() as $row) {
+      foreach ($query->result_array() as $row) {
         array_push($result, $row);
       }
 
