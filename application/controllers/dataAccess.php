@@ -30,6 +30,22 @@ class DataAccess extends CI_Controller {
     }
   }
 
+  public function getPatientInformationHistory($patientId = false)
+  {
+    if($patientId)
+    {
+      $this->db->from['PatientHistory']->where('ID', $patientId)->order_by('HistoryID', 'Desc');
+      $query = $this->db->get();
+
+      $result = array();
+      foreach ($query->row_array() as $row) {
+        array_push($result, $row);
+      }
+
+        echo json_encode($result);
+    } 
+  }
+
   public function setPatientInformation() {
     $patientInfo = json_decode(file_get_contents("php://input"));
 
