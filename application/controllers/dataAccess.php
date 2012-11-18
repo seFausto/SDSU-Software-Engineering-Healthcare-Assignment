@@ -21,6 +21,7 @@ class DataAccess extends CI_Controller {
   public function getPatientInformation($patientId = false) {
     if($patientId) {
       $this->db->from('Patient')->where('ID', $patientId);
+
       $query = $this->db->get();
       if($query->num_rows())
       {
@@ -34,7 +35,9 @@ class DataAccess extends CI_Controller {
   {
     if($patientId)
     {
-      $this->db->from['PatientHistory']->where('ID', $patientId)->order_by('HistoryID', 'Desc');
+      $this->db->from('PatientHistory')->where('ID', $patientId)
+      ->join('User', 'User.ID = PatientHistory.ChangeBydID')
+      ->order_by('HistoryID', 'Desc');
       $query = $this->db->get();
 
       $result = array();
