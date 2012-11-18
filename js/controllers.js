@@ -80,10 +80,11 @@ var addPatientController = function($scope, $http) {
 } 
 
 var patientHistoryController = function($scope, $http, $routeParams) {
-  $http({method: 'GET', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/getPatientInformation/' + $routeParams.pid}).
+  $http({method: 'GET', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/getPatientInformationHistory/' + $routeParams.pid}).
   success(function(data, status, headers, config) {
+    console.log(data);
     $scope.history = data;
-    console.log($scope.history);
+    console.log($scope.history.length);
   }).
   error(function(data, status, headers, config) {
     //Should do something to handle errors.
