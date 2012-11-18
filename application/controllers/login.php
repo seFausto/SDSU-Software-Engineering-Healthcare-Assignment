@@ -29,7 +29,7 @@ class Login extends CI_Controller {
     $this->load->model('userModel');
 
     $this->load->view('header', array(
-      'access' => $this->userModel->getAccessArray()));
+      'access' => $this->userModel->getAccessArray(0)));
     $this->load->view('login', array(
       'error' => (isset($error) ? $error : false)));
     $this->load->view('footer');
