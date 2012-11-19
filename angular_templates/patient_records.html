@@ -14,7 +14,6 @@
         <th>Phone</th>
         <th>Primary Care Physician</th>
         <th>Gender</th>
-        <th>Insurance Carrier ID</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -26,7 +25,6 @@
         <td>{{patient.Phone}}</td>
         <td>{{patient.PrimaryCarePhysician}}</td>
         <td>{{getGender(patient)}}</td>
-        <td>{{patient.InsuranceCarrierID}}</td>
         <td><a href="#/patient_records/{{patient.ID}}">View and Edit</a> | 
           <a href="#/patient_history/{{patient.ID}}">Patient History</a></td>
       </tbody>

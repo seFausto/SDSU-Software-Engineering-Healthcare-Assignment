@@ -35,9 +35,7 @@ class DataAccess extends CI_Controller {
   {
     if($patientId)
     {
-      $this->db->from('PatientHistory')->where('ID', $patientId)
-      ->join('User', 'User.ID = PatientHistory.ChangeBydID')
-      ->order_by('HistoryID', 'Desc');
+      $this->db->from('PatientHistory')->where('PatientHistory.PatientID', $patientId)->join('User', 'User.ID = PatientHistory.ChangeByID')->order_by('HistoryID', 'Desc');
       $query = $this->db->get();
 
       $result = array();
@@ -57,7 +55,7 @@ class DataAccess extends CI_Controller {
     if($query->num_rows()) {
       $result = $query->row();
       $this->db->insert('PatientHistory', array(
-        'ID' => $result->ID, 
+        'PatientID' => $result->ID, 
         'NameFirst' => $result->NameFirst, 
         'NameLast' => $result->NameLast, 
         'NameMiddle' => $result->NameMiddle, 
@@ -80,6 +78,25 @@ class DataAccess extends CI_Controller {
     }
   }
 
+  public function revertPatientRecord() {
+    $recordInfo = json_decode(file_get_contents("php://input"));
+
+    $this->db->where('ID', $recordInfo->PatientID)->update('Patient', array(
+      'NameFirst' => $recordInfo->NameFirst, 
+        'NameLast' => $recordInfo->NameLast, 
+        'NameMiddle' => $recordInfo->NameMiddle, 
+        'Address' => $recordInfo->Address, 
+        'Phone' => $recordInfo->Phone, 
+        'InsuranceCarrierID' => $recordInfo->InsuranceCarrierID,
+        'DateOfBirth' => $recordInfo->DateOfBirth, 
+        'Gender' => $recordInfo->Gender, 
+        'ChangeByID' => $_SESSION['user']['id'], 
+        'ChangeDate' => time()
+      ));
+
+    $this->db->where(array('HistoryID >=' => $recordInfo->HistoryID, 'PatientID' => $recordInfo->PatientID))->delete('PatientHistory');
+    
+  }
   public function addPatient() {
     $patientInfo = json_decode(file_get_contents("php://input"));
     $this->db->insert('Patient', $patientInfo);

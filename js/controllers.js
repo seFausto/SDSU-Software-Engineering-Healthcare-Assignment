@@ -2,6 +2,15 @@ var healthtrakController = function($scope, $http) {
     
 }
 
+var homeController = function($scope, $timeout) {
+
+  $scope.updateTime = function() {
+    $scope.theTime = new Date();
+    $timeout($scope.updateTime, 1000);
+  }
+    $scope.updateTime();
+
+}
 var loginController = function($scope, $http) {
 
 } 
@@ -89,4 +98,28 @@ var patientHistoryController = function($scope, $http, $routeParams) {
   error(function(data, status, headers, config) {
     //Should do something to handle errors.
   });
+
+  $scope.getFullName = function(patient) {
+    if(patient.NameMiddle)
+      return patient.NameFirst + " " + patient.NameMiddle + " " + patient.NameLast;
+    else
+      return patient.NameFirst + " " + patient.NameLast;
+  }
+  $scope.getGender = function(patient) {
+    if(patient.Gender == 0)
+      return "Female";
+    else if(patient.Gender == 1)
+      return "Male";
+    return "--";
+  }
+
+  $scope.revertRecord = function(index) {
+    $http({method: 'POST', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/revertPatientRecord/', data: $scope.history[index]}).
+      success(function(data, status, headers, config) {
+        window.history.back(-1);
+      }).
+      error(function(data, status, headers, config) {
+        //Should do something to handle errors.
+      });
+  }
 }

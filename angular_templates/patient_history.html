@@ -1,7 +1,7 @@
 <div class="container" style="margin-top: 50px;">
   <div class="row">
     <div class="well">
-
+      Viewing History Records.
     </div>
   </div>
   <div class="row">
@@ -17,17 +17,24 @@
         <th>Changed Date</th>
       </tr>
     </thead>
+    <tbody ng-show="history.length == 0">
+      <tr>
+        <td colspan="7">
+          <center>No patient record changes to display.</center>
+        </td>
+      </tr>
+    </tbody>
     <tbody ng-repeat="historyRow in history">
       <tr>
         <td>{{getFullName(historyRow)}}</td>
         <td>{{historyRow.DateOfBirth | date:'MM/dd/yyyy'}}</td>
         <td>{{historyRow.Phone}}</td>
         <td>{{historyRow.Address}}</td>
-        <td>{{getGender(patient)}}</td>
-        <td>{{historyRow.ChangeByID}}</td>
+        <td>{{getGender(historyRow)}}</td>
+        <td>{{historyRow.UserName}}</td>
         <td>{{historyRow.ChangeDate | date:'shortDate'}}</td>
 
-        <td><a href="#" >Revert Record</a>
+        <td><a ng-click="revertRecord($index)" >Revert To Record</a>
       </tbody>
   </table>
 </div>
