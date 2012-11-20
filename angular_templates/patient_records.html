@@ -10,7 +10,6 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>D.O.B.</th>
         <th>Phone</th>
         <th>Primary Care Physician</th>
         <th>Gender</th>
@@ -21,7 +20,6 @@
       <tr>
         <td>{{patient.ID}}</td>
         <td>{{getFullName(patient)}}</td>
-        <td>{{patient.DateOfBirth | date:'MM/dd/yyyy'}}</td>
         <td>{{patient.Phone}}</td>
         <td>{{patient.PrimaryCarePhysician}}</td>
         <td>{{getGender(patient)}}</td>

@@ -77,10 +77,10 @@ var addPatientController = function($scope, $http) {
   $scope.save = function() {
     $http({method: 'POST', url: 'http://localhost:8888/healthtrak/index.php/dataAccess/addPatient/', data: $scope.patient}).
     success(function(data, status, headers, config) {
-      window.history.back(-1);
+      window.location = "welcome#/"
     }).
     error(function(data, status, headers, config) {
-      //Should do something to handle errors.
+      window.location = "welcome#/"
     });
 
 
