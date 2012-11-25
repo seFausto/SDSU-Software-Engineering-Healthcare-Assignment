@@ -66,13 +66,14 @@ class DataAccess extends CI_Controller {
         'Gender' => $result->Gender, 
         'PrimaryCarePhysician' => $result->PrimaryCarePhysician, 
         'ChangeByID' => $_SESSION['user']['id'], 
-        'ChangeDate' => time()));
+        'ChangeDate' => time()*1000));
     }
 
 
     if($patientInfo->ID) {
       $this->db->where('ID', $patientInfo->ID);
       $this->db->update('Patient', $patientInfo);
+
     } else {
       echo "ERRO"; die();
     }
@@ -100,6 +101,20 @@ class DataAccess extends CI_Controller {
   public function addPatient() {
     $patientInfo = json_decode(file_get_contents("php://input"));
     $this->db->insert('Patient', $patientInfo);
+  }
+
+  public function getPhysicians() {
+    $this->db->from('Employee')->where(array('EmployeeTypeID >= ' => 1, 'EmployeeTypeID <=' => 7));
+    $query = $this->db->get();
+
+    $docs = array();
+    if($query->num_rows()) {
+      foreach($query->result_array() as $doc) {
+        array_push($docs, $doc['NameFirst'] . ' ' . $doc['NameLast']);
+      }
+    }
+
+    echo json_encode($docs);
   }
 }
 

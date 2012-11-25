@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="<?php echo base_url();?>css/normalize.min.css">
         <link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.css">
         <link rel="stylesheet" href="<?php echo base_url();?>css/main.css">
-        <link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui-1.9.1.custom.css">
+        <link rel="stylesheet" href="<?php echo base_url();?>css/datepicker.css">
 
 
         <script src="<?php echo base_url();?>js/vendor/modernizr-2.6.1.min.js"></script>

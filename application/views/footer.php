@@ -3,7 +3,7 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="j<?php echo base_url();?>s/vendor/jquery-1.8.1.min.js"><\/script>')</script>
-        <script src="<?php echo base_url();?>js/vendor/jquery-ui.js"></script>
+        <script src="<?php echo base_url();?>js/vendor/bootstrap-datepicker.js"></script>
         <script src="<?php echo base_url();?>js/vendor/date.js"></script>
         <script src="<?php echo base_url();?>js/vendor/bootstrap.min.js"></script>
         <script src="<?php echo base_url();?>js/vendor/angular.min.js"></script>

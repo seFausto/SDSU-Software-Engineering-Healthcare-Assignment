@@ -27,12 +27,12 @@
     <tbody ng-repeat="historyRow in history">
       <tr>
         <td>{{getFullName(historyRow)}}</td>
-        <td>{{historyRow.DateOfBirth | date:'MM/dd/yyyy'}}</td>
+        <td>{{historyRow.DateOfBirth | date:'mediumDate'}}</td>
         <td>{{historyRow.Phone}}</td>
         <td>{{historyRow.Address}}</td>
         <td>{{getGender(historyRow)}}</td>
         <td>{{historyRow.UserName}}</td>
-        <td>{{historyRow.ChangeDate | date:'shortDate'}}</td>
+        <td>{{historyRow.ChangeDate | date:'mediumDate'}}</td>
 
         <td><a ng-click="revertRecord($index)" >Revert To Record</a>
       </tbody>

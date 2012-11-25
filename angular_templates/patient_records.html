@@ -11,6 +11,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Phone</th>
+        <th>Date of Birth</th>
         <th>Primary Care Physician</th>
         <th>Gender</th>
         <th>Actions</th>
@@ -21,6 +22,7 @@
         <td>{{patient.ID}}</td>
         <td>{{getFullName(patient)}}</td>
         <td>{{patient.Phone}}</td>
+        <td>{{patient.DateOfBirth | date:'mediumDate'}}
         <td>{{patient.PrimaryCarePhysician}}</td>
         <td>{{getGender(patient)}}</td>
         <td><a href="#/patient_records/{{patient.ID}}">View and Edit</a> | 
